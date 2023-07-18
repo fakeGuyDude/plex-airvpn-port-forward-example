@@ -13,6 +13,6 @@ services:
     volumes:
       - /home/<user>/docker/plex/data:/config
       - /dev/shm:/transcode #transcodes in RAM
-      - /home/<user>/media/data/media:/data/media #maps docker colume to external media on machine 
+      - /home/<user>/media/data/media:/data/media #maps docker volume to external media on machine 
     devices:
       - /dev/dri:/dev/dri #allows hardware transcoding on intel GPU
