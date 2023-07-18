@@ -1,0 +1,18 @@
+version: '2'
+services:
+  plex:
+    container_name: plex
+    image: plexinc/pms-docker:latest
+    restart: unless-stopped
+    environment:
+      - TZ=America/Denver
+      - PUID=1001
+      - PGID=1002
+      - VERSION=docker
+    network_mode: "container:gluetun"
+    volumes:
+      - /home/<user>/docker/plex/data:/config
+      - /dev/shm:/transcode #transcodes in RAM
+      - /home/<user>/media/data/media:/data/media #maps docker colume to external media on machine 
+    devices:
+      - /dev/dri:/dev/dri #allows hardware transcoding on intel GPU
